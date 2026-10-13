@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>sealed — 2026</title>
+<title>Letter, 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Spectral:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -40,55 +40,24 @@
 
   .sheet { width: 100%; max-width: 40rem; }
 
-  /* ---------- masthead ---------- */
+  /* ---------- landing ---------- */
 
-  .eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--dim);
-    display: flex;
-    gap: 1rem;
-    align-items: baseline;
-    margin: 0 0 3.5rem;
-  }
-  .eyebrow .dot { color: var(--ochre); }
-  .eyebrow .status { color: var(--verdigris); }
-
-  /* ---------- latex source ---------- */
-
-  .src { margin: 0 0 2.75rem; }
-  .src .cmd  { color: var(--verdigris); }
-  .src .arg  { color: var(--chalk); }
-  .src .note { color: var(--dim); font-style: italic; }
-  .src .row  { white-space: pre-wrap; word-break: break-word; }
-  .src .indent { padding-left: 1.75rem; }
-
-  /* ---------- redaction ---------- */
-
-  .withheld { margin: 0 0 3rem; }
-
-  .bar {
-    height: 0.85rem;
-    background: var(--panel);
-    border-left: 2px solid var(--rule);
-    margin-bottom: 0.6rem;
+  .intro {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin: 0 0 2.5rem;
   }
 
   /* ---------- key entry ---------- */
 
-  .gate {
-    border-top: 1px solid var(--rule);
-    padding-top: 2rem;
-  }
-
-  .gate label {
-    display: block;
-    font-size: 11px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--dim);
-    margin-bottom: 0.9rem;
+  .sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
   }
 
   .field {
@@ -157,6 +126,7 @@
 
   .output { display: none; }
   .output.on { display: block; }
+  .output:focus { outline: none; }
 
   .line {
     opacity: 0;
@@ -245,42 +215,20 @@
 <body>
 <main class="sheet">
 
-  <p class="eyebrow">
-    <span>Musuan</span><span class="dot">·</span><span>2026</span><span class="dot">·</span><span class="status" id="status">sealed</span>
-  </p>
-
   <div id="locked">
 
-    <div class="src">
-      <div class="row"><span class="cmd">\begin</span><span class="arg">{message}</span></div>
-      <div class="row indent"><span class="cmd">\to</span><span class="arg">{whoever I turn out to be}</span></div>
-      <div class="row indent"><span class="cmd">\from</span><span class="arg">{R., third floor, late}</span></div>
-      <div class="row indent"><span class="cmd">\status</span><span class="arg">{awaiting key}</span></div>
-      <div class="row">&nbsp;</div>
-      <div class="row indent note">% body withheld — three things I will forget,</div>
-      <div class="row indent note">% one unsolved problem, twelve questions</div>
-    </div>
-
-    <div class="withheld" aria-label="Message body, encrypted">
-      <div class="bar" style="width:92%"></div>
-      <div class="bar" style="width:78%"></div>
-      <div class="bar" style="width:88%"></div>
-      <div class="bar" style="width:41%"></div>
-      <div class="bar" style="width:83%"></div>
-      <div class="bar" style="width:66%"></div>
-    </div>
+    <p class="intro">A letter to whoever I turn out to be.</p>
 
     <div class="gate">
-      <label for="key">Key</label>
+      <label for="key" class="sr">Key</label>
       <div class="field">
         <input id="key" type="text" placeholder="one word" autocomplete="off"
                autocapitalize="off" spellcheck="false">
-        <button id="go" type="button">Compile</button>
+        <button id="go" type="button">Open</button>
       </div>
       <p class="fault" id="fault" role="status" aria-live="polite"></p>
       <p class="hint">
-        Twenty-one words carried this. One of them wore a capital
-        it had not earned, and it was never a name.
+        Let it be arbitrarily small. Among twenty-one, it wasn’t.
       </p>
     </div>
 
@@ -291,7 +239,7 @@
 </main>
 
 <script>
-const SEALED = "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";
+const SEALED = "vLeKadQ+hdB7lctwMa6O+aJdnO30Tln/Ci6TcqPIu4c9jcP8bjrfqjad3X1suEPm24pVM3aSka2t1JqNQwkrbGSeC8/mUb+QIiWAXqbRolcJQFregTYSw97IMdghgVQEnA4yzWMMCCjmhA8CbSyo0s3fexgd7fYTZ2I1pvqJmpnpkM5vMTJpJQhPlUACpQcjw3rO+L1plrRI2B41Y75l6f6ggkxrjtrvLBCTnoPe8BrCEaSg1iIPzgkbIL64dzqTGgtzl+XpIS/RwIs3fyW9Lz1L8k8T7ISSgqZlihr3ZKhW7J2n+9Ekqm8RvNLfkCIOoGL05jD4FOKSdclEtctDhLY1MZEBA9PSyZdJ/Pad9M5m8mCvh6dokqtMh+5LCFcJA7GuDQoz9edAbx3WXTHSXTwWe51rdLYkj2inm2XGe+6WL7PnEuFduG2MTtg+jEG1Z1frCSrjHxRhLWMEb/dy1QQHFIinURwYGQDZ3HVCH3DZ7BT9MR03oWJSxC0k7sID0J1hsfGO3mWgql/3/A8+ZAApUn8VTDGviEXrrujhqO6WDR0anyN0fjSCebFkpUjbuTO9O6G9OJYrvUQpAhdEz5MZIKVJwUZLQSOkD2GbddZbSdHisB/lQyk7b87ZASRD2mormT5dv5wxjFYP4v/nxIavfZp4wV+7yIZj7k0yuz9oXcGyJduvUOiWiRzoT0fleVvEb3pILv5b6FNAaWVvm6z0aaliZ4lnH5NcQsR+kEVrzjgCbS8dXLW93P3fvoFhMGUeUlJKOMNjJNl+DNQ5Ka/z89zpEI3DE1fprEoXvpeW2KeiRoqIGX57eVYYNBgvcNL5b+AUsrPrzeCAVY5jEwCba7faykyckV0MruB1j1Df87iZnEVvh2wWeBuQ3OcODzpXkc9oJTPT3b26qdI+8zgKpmJh2vmL9uhwJzhHkE5aaMpXw9XQTnt0wE82m6k5pIU/+D6bIfa2ip9piTilIstwnGVXEJUM8SCXepL9cNdGik0zQ9W4vbeTu55zminVLShADXKb4qsMdqROJGNUkpnUwBSl2ohTe+0gCKtYoPfTZLRG2DruwKVJMmZnHXKK5/58I1nwqTJCNOzAL8h4UMWBs1MZJHz2b2u4fJr1+V22mdcKDie3ht+rr91Lk/pUNWxWocFB7oZQyY2R0iXqa3gCdjeUExRyK/qdDxLe2qT7APzV9NSQ4S3PsVlNKbm1pG9AmZ9eZXW2chY5gZRLV6U7RZjridXtidbSJ1Dj5IQe+rp9JH6H44QWuiQHx+Mv7Gf8WPqHK2sfZlIwywR9sIg0LjiUm9cIeUjvFg61nXE4WKc8pDMw/Glud5OSEAJNi7CaG66zJ3+mbNWDpXb5w5bMaZu4W6PAcm6hN8FDi/iVCLzOrENBnrUaR6XOhgQ/hWTStCi7FzCry4VtOhkKsEs6OKLAQlZC9NwJW9JOkIdS/9/TibgM8Vpc1AWo+dctOht4+urlx1CYSEn0wqN5MWpBqRVqdkDvA9Sc8TsAk84uAaqilT2gw87f+6Xr9OUdVHq2/CnVUejhZ3z1rt9GaZ3ninSc7RfEg1UVTWVLPVgt+8roZaqbRf1cxDmIurdwFesgaXg29osfnwbAwricxwkW8b9KXSU2BKSQkwN2+ybnlsFLF3zxU00w2WLLleE1/RgKTyaHy+B8Rf4bcyp1E2Adn9+7BOOXkaYvSONVdSuiFnVSjzsot4XrseMc60TJBlSiuGNb/ZChKTR3hZC+7T5AY6ibd0a9QUhpSsjiuyqBmPjpS+f6C96OnfpBZEZ0jNfN/AVDmBHr+6yDj3NTZCbSMy9GE8PLl3OWAlzA1GlMDY3vZKdgFYiB7ztcgEFR+Bho8p+yDDcIEZGBuS5rHXe9N8R4DQLsEM2rBHMXX20rm33wlhs6iLdqOXB1e19SyoIEdGzKYmjYvlHmHtzpQ5Ssf6MbH6M3ukaQ74abCvbRjo4ZIByBJoupSnH9FA2AZ1VZWyEYohxXMwx7a3uWt+YTc/YMKeVtwd+Qer2QpatuQeeT66RD+czDebbW8we3K/LN+Lp8K7JWDZTvkHzP+GVw1Zk1HArIKdAYcKQQcWDfngiFb0T3t/AnHse/jmoXEipWgwjpEyvX+44WFZqirPteVbJWh28kBfqfaVx0Ao34ePqDaMZavWgJqmd197hCLnHleGYHFWU/MiOONhqWLViYiclpdYB31PSeWQ5aKuBd0PIrpktUnDRb82/SjomhK2ZUnGh/Xs3UchtLNYbOHdpXjSCka1hPnmRTqKljcEGg1ScFO+7s967Qj2Mryj+iimGRxfIlfF7HqLFNrwyWVJpyusfsp11seT3l2MJlQEr2Zj2MUuGAFDC99++n4/F5wsyBswAc5Mwleb3dgbM7zNR6P/5gYiauULVbtX8ZY2oRrLY8E5Z4Qs4mNi8lRdOgsrJH472eALYWDWzMez4AWLLT7JL1lUD1AgP0IJSudLndRM3mJxqWn0uW2YTUfS/Qt7vigmwzWLt1jWgInC0+fyUlXnOUscY55ikLZ0fmiaJUgvhqRqtWb0YqpSTjhV7NF2DXe4MzYFPnwQ8nUCGveqfqiu8a64e3vW4CyJOJy8Or4K410qjjSD6/0BTMfjCKuwCzsuFwnpFmqa+WBn30R1gQtRylSjSWAQ/A+18sv6kzBUcbVz8oUCmboQTa9a3PJb5XBMFMB3+D2fKrVSDPCdm9yMWs4AUc0hDhVPKzHs5UArcFjDAs2B/t/0pYtcj1Zrpcx2f6xJGQUPP1cC9yP7Wbkb59eix4V3a+Wo0QSo3DLHAOApG0/dfDwfvbhDqttDkfE3Oym+4aTt8yb/GnFNxBkBN6+x6YengqqP0lclZKmg9np1pO08VvDGLN9EbVSOE7F3FASVScgEBdQKtolCduQ5bkjd5ckOermLMz0HxhX7Ar96PbLKz7BRCA5ZnhoU6TsCMOpyjbAQV41FTBAWo3MW3vgstyMnMDH8qOm9E9nHSsOLoVXVqw6NFV+u1MxfEz4mocWPMg/eg3N86SfLyTUEL6zqwVpRsb1BreCxwwZtfPwLJ8FcucaI9hsW9FCvXANFWt/f8DQ9CUQc1zgcm9mdUCl65E2eLYI5/hZi+2UaYMwr2bpIxzv+b4qRs8IACBu0UjgX15wbJiGNXDHk8ARZ3tAZSANeA+znKcwJrVZvj7Po3STZgfWTtb183lrrfNut6XBlK99UHo47ILTs8wH90NGNJ9gUfQOCMd4ahV0glC5gzFI31WmoWR9a8FPgxGvQUKhCTGOocW25XEaK5711a/dV9xxY8ZXkZaTc2EWp1QPBgtTQIephYasjjHKA==";
 
 const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
 
@@ -385,7 +333,6 @@ function reveal(html) {
   });
 
   document.getElementById("locked").remove();
-  document.getElementById("status").textContent = "open";
   output.setAttribute("tabindex", "-1");
   output.focus();
 }
@@ -397,6 +344,10 @@ const fault = document.getElementById("fault");
 async function attempt() {
   const passphrase = input.value.trim();
   if (!passphrase) { fault.textContent = "Enter the key."; return; }
+  if (!window.crypto || !crypto.subtle) {
+    fault.textContent = "This browser can't open it from here. Use the https:// link.";
+    return;
+  }
 
   go.disabled = true;
   go.textContent = "…";
@@ -406,9 +357,9 @@ async function attempt() {
     const md = await unseal(passphrase);
     reveal(typeset(md));
   } catch {
-    fault.textContent = "That key does not verify. Count again.";
+    fault.textContent = "Not that word. Count again.";
     go.disabled = false;
-    go.textContent = "Compile";
+    go.textContent = "Open";
     input.select();
   }
 }
